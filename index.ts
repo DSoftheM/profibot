@@ -14,7 +14,7 @@ async function getOrders(cookie: string): Promise<Order[]> {
         .then((r: OrdersResponse) => r.data.orders);
 }
 
-const bot = new TelegramApi("", {
+const bot = new TelegramApi("6324049612:AAE10Z8W7HfAdtcB1pdGKe-ePuP1Rso5hOw", {
     polling: true,
 });
 
@@ -96,7 +96,10 @@ async function sendOrders(chatId: number, cookie: string, user: User, telegramUs
 
         checkOutdatedOrders(orders, user);
 
-        console.log(`Количество непросмотренных и неотправленных заказов: ${telegramUsername}`, isNotViewedAndNotSendedOrdersCount);
+        console.log(
+            `Количество непросмотренных и неотправленных заказов: ${telegramUsername}`,
+            isNotViewedAndNotSendedOrdersCount
+        );
 
         if (isNotViewedAndNotSendedOrdersCount > 0) {
             if (timerMessage) {
